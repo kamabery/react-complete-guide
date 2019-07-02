@@ -6,6 +6,8 @@ import OrderSummary from './../../components/Burger/OrderSummary/OrderSummary';
 import axios from '../../axios-order';
 import Spinner from './../../components/UI/Spinner/Spinner';
 import withNetworkErrorHandler from '../../hoc/withNetworkErrorHandler/withNetworkErrorHandler';
+import { connect } from 'react-redux';
+import * as actionTypes from '../../store/actions';
 
 const INGREDIENT_PRICES = {
     salad: 0.5,
@@ -17,8 +19,6 @@ const INGREDIENT_PRICES = {
 
 class BurgerBuilder extends Component {
     state = {
-        ingredients: null,
-        totalPrice: 4,
         purchaseable: false,
         purchasing: false,
         loading: false,
@@ -28,7 +28,7 @@ class BurgerBuilder extends Component {
     componentDidMount () {
         axios.get('/Ingredients.json')
         .then(response => {
-            this.setState({ingredients: response.data})
+            this.props.onIngredientsSet(response.data);
         }).catch(error => { this.setState({error: true})});
     }
 
@@ -45,18 +45,15 @@ class BurgerBuilder extends Component {
     }
 
     addIngredientHandler = (type) => {
-        const oldCount = this.state.ingredients[type];
+        const oldCount = this.props.ingredients[type];
         const updatedCount = oldCount + 1;
-        const updatedIngredients = {
-            ...this.state.ingredients
-        };
+        this.props.onIngredientUpdate(type, updatedCount);
 
-        updatedIngredients[type] = updatedCount;
         const priceAddition = INGREDIENT_PRICES[type];
         const oldPrice = this.state.totalPrice;
         const newPrice = oldPrice + priceAddition;
-        this.updatePurchaseState(updatedIngredients);
-        this.setState({totalPrice: newPrice, ingredients: updatedIngredients});
+        this.updatePurchaseState(this.props.ingredients);
+        this.props.onPriceUpdate(newPrice);
     }
 
     removeIngredientHandler = (type) => {
@@ -142,4 +139,19 @@ class BurgerBuilder extends Component {
     }
 }
 
-export default withNetworkErrorHandler(BurgerBuilder, axios); 
+const mapStateToProps = (state) => {
+    return {
+        ingredients: state.ingredients,
+        totalPrice: state.totalPrice    
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onIngredientsSet: (ingredients) => dispatch({type: actionTypes.SET_INGREDIENTS, ingredients: ingredients }),
+        onIngredientUpdate: (ingredient, count) => dispatch({type: actionTypes.UPDATE_INGREDIENT, ingredient: ingredient, count: count}),
+        onPriceUpdate: (totalPrice) => dispatch({type: actionTypes.UPDATE_PRICE, totalPrice})
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(withNetworkErrorHandler(BurgerBuilder, axios)); 
