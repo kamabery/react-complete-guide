@@ -1,0 +1,49 @@
+* Install Visual Studio Code
+	* Install Extensions
+		* Git Easy
+		* Git Hisotry
+		* React Extension Pack
+		* Reatjs code snippits
+	* Type: ctrl + , in VS code
+	* Open json settings - top right corner
+		Add Json element:
+			"emmet.includeLanguages": {
+			    "javascript": "javascriptreact",
+			    "vue-html": "html",
+			    "razor": "html",
+			    "plaintext": "jade"
+			}
+
+	* More on Emmet: https://code.visualstudio.com/blogs/2017/08/07/emmet-2.0
+
+-----------------------------------------------------------
+* Install NPM if you haven't
+* Globally install the npm react app npm install create-react-app -g
+
+* Create a new app: 
+	* navigate to parent folder folder
+	* in console run
+		create-react-app [nameOfApp]
+
+--------------------------------------------------------------------------------------
+[CSS Moduels]
+
+https://facebook.github.io/create-react-app/docs/adding-a-css-modules-stylesheet
+
+--------------------------------------------------------------------------------------
+[Http]
+npm install axios --save
+https://github.com/axios/axios
+
+--------------------------------------------------------------------------------------
+Routing
+https://github.com/ryanflorence/react-router-relative-links
+----------------------------------------------------------------------------------------
+Redux
+npm install --save redux
+npm install --save react-redux 
+========================================================================================
+Forms
+https://codebrahma.com/form-libraries-in-react/
+https://dev.to/italomlp/unform-the-definitive-form-library-for-react-apps-35lh
+https://jaredpalmer.com/formik/docs/overview
