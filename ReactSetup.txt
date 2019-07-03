@@ -3,7 +3,7 @@
 		* Git Easy
 		* Git Hisotry
 		* React Extension Pack
-		* Reatjs code snippits
+		* Reactjs code snippits
 	* Type: ctrl + , in VS code
 	* Open json settings - top right corner
 		Add Json element:
@@ -47,6 +47,3 @@ Forms
 https://codebrahma.com/form-libraries-in-react/
 https://dev.to/italomlp/unform-the-definitive-form-library-for-react-apps-35lh
 https://jaredpalmer.com/formik/docs/overview
-
-
-KILLING ME!!!
