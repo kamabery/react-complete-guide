@@ -50,7 +50,7 @@ class BurgerBuilder extends Component {
         this.props.onIngredientUpdate(type, updatedCount);
 
         const priceAddition = INGREDIENT_PRICES[type];
-        const oldPrice = this.state.totalPrice;
+        const oldPrice = this.props.totalPrice;
         const newPrice = oldPrice + priceAddition;
         this.updatePurchaseState(this.props.ingredients);
         this.props.onPriceUpdate(newPrice);
@@ -84,10 +84,10 @@ class BurgerBuilder extends Component {
 
     purchaseContinueHandler = () => {
         const queryParams = [];
-        for(let i in this.state.ingredients){
-            queryParams.push(encodeURIComponent(i) + '=' + encodeURIComponent(this.state.ingredients[i]));
+        for(let i in this.props.ingredients){
+            queryParams.push(encodeURIComponent(i) + '=' + encodeURIComponent(this.props.ingredients[i]));
         }
-        queryParams.push('price=' + this.state.totalPrice)
+        queryParams.push('price=' + this.props.totalPrice)
         const queryString = queryParams.join('&');
         this.props.history.push({
             pathname: '/checkout',
@@ -97,7 +97,7 @@ class BurgerBuilder extends Component {
 
     render() {
         const disabledInfo = {
-            ...this.state.ingredients
+            ...this.props.ingredients
         };
 
         for(let key in disabledInfo) {
@@ -107,12 +107,12 @@ class BurgerBuilder extends Component {
         let burger = this.state.error 
             ? <p>Ingredients can't be loaded</p> : <Spinner/>
 
-        if(this.state.ingredients){
+        if(this.props.ingredients){
             let orderSummary =   <OrderSummary 
-            ingredients={this.state.ingredients}
+            ingredients={this.props.ingredients}
             purchaseCancelled={this.purchaseCancelHandler}
             purchaseContinue={this.purchaseContinueHandler}
-            price={this.state.totalPrice} />
+            price={this.props.totalPrice} />
     
             
             if (this.state.loading) {
@@ -124,12 +124,12 @@ class BurgerBuilder extends Component {
                 <Modal show={this.state.purchasing} modalClosed={this.purchaseCancelHandler}>
                     {orderSummary}                        
                 </Modal>
-                <Burger ingredients={this.state.ingredients}/>
+                <Burger ingredients={this.props.ingredients}/>
                 <BuildControls 
                     ingredientAdded={this.addIngredientHandler}
                     ingredientRemoved={this.removeIngredientHandler}
                     disabled={disabledInfo} 
-                    price={this.state.totalPrice}
+                    price={this.props.totalPrice}
                     purchaseable={this.state.purchaseable}
                     purchase={this.purchaseHandler}/>
             </Fragment>

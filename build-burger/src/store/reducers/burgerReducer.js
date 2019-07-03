@@ -1,7 +1,7 @@
 import * as actionType from '../actions';
 
 const initalState = {
-    ingredients: [],
+    ingredients: null,
     totalPrice: 0
 }
 
@@ -10,20 +10,16 @@ const reducer = (state = initalState, action) => {
         case actionType.SET_INGREDIENTS : {
             return {
                 ...state,
-                ingredients: [...action.ingredients]
+                ingredients: action.ingredients
             }
         }
         case actionType.UPDATE_INGREDIENT :
-            const updatedArray = state.ingredients.filter();
-            for(let ing in updatedArray){
-                if(ing.action.ingredientKey === ing){
-                    updatedArray[ing] = action.count;
-                }
-            }
-
+            // action.ingredientKey, action.count
+            const newIngredients = {...state.ingredients};
+            newIngredients[action.ingredient] = action.count;
             return {
                 ...state,
-                ingredients: updatedArray
+                ingredients: newIngredients
             }
         case actionType.UPDATE_PRICE : 
             return {
