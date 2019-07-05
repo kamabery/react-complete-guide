@@ -1,7 +1,17 @@
-import * as actionTypes from '../actions'
+import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
     results: []
+}
+
+const deleteResult = (state, id) => {
+    const updatedArray = state.results.filter(result => {
+        return result.id !== id;
+    })
+    return {
+        ...state,
+        results: updatedArray
+    }
 }
 
 const reducer = (state = initialState, action) => {
@@ -15,13 +25,7 @@ const reducer = (state = initialState, action) => {
             }
         }
         case actionTypes.DELETE_RESULT: {
-            const updatedArray = state.results.filter(result => {
-                return result.id !== action.id;
-            })
-            return {
-                ...state,
-                results: updatedArray
-            }
+            return deleteResult(state, action.id);
         }
         default: {
             return state;

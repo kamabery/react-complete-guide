@@ -42,8 +42,19 @@ https://github.com/ryanflorence/react-router-relative-links
 Redux
 npm install --save redux
 npm install --save react-redux 
+npm install --save redux-thunk
 ========================================================================================
 Forms
 https://codebrahma.com/form-libraries-in-react/
 https://dev.to/italomlp/unform-the-definitive-form-library-for-react-apps-35lh
 https://jaredpalmer.com/formik/docs/overview
+
+Chrome Toos
+===========================================================================================
+React Web Tools: https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi
+
+Redux Dev Tools: https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd
+	App setup for tool: https://github.com/zalmoxisus/redux-devtools-extension#usage
+
+----------------------------------------------------------------------------------------------------------
+https://codepen.io/HunorMarton/details/rwpGXj
