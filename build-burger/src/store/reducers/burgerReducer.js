@@ -14,12 +14,12 @@ const reducer = (state = initalState, action) => {
             }
         }
         case actionType.UPDATE_INGREDIENT :
-            // action.ingredientKey, action.count
-            const newIngredients = {...state.ingredients};
-            newIngredients[action.ingredient] = action.count;
             return {
                 ...state,
-                ingredients: newIngredients
+                ingredients: {
+                    ...state.ingredients,
+                    [action.ingredient]: action.count
+                }
             }
         case actionType.UPDATE_PRICE : 
             return {
