@@ -4,17 +4,14 @@ export {
     ,updatePrice
     ,setError    
 }
-from './burgerBuilder'
+from './burgerBuilder';
 
 export {purchaseBurger, 
         purchaseInit,
         fetchOrders} 
-from './order'
+from './order';
 
 export {
-    authStart,
-    authSuccess,
-    authFail,
     auth
 }
-from './auth'
+from './auth';
