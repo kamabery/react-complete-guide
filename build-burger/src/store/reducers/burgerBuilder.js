@@ -4,7 +4,8 @@ import { updateObject } from './../utility';
 const initalState = {
     ingredients: null,
     totalPrice: 0,
-    error: false
+    error: false,
+    building: false
 }
 
 const reducer = (state = initalState, action) => {
@@ -13,7 +14,8 @@ const reducer = (state = initalState, action) => {
             return {
                 ...state,
                 ingredients: action.ingredients,
-                totalPrice: 0
+                totalPrice: 0,
+                building: false
             }
         }
         case actionType.UPDATE_INGREDIENT :
@@ -21,7 +23,8 @@ const reducer = (state = initalState, action) => {
             const updateIngredients = updateObject(state.ingredients, updatedIngredient);
             const updatedState = {
                 ...state,
-                ingredients: updateIngredients,                
+                ingredients: updateIngredients,
+                building: true
             }
             
             return updatedState;

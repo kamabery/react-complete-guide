@@ -1,6 +1,6 @@
 import * as actionTypes from './actionTypes';
 import axios from 'axios';
-const apiKey = 'AIzaSyCsJKeHeE8375af3M0iKeNEOvyAeVQnHXs'
+
 const baseUrl = 'https://www.googleapis.com/identitytoolkit/v3/relyingparty/'
 
 export const checkAuthTimeout = (experationTime)  => {
@@ -46,12 +46,30 @@ export const auth = (email, password, isSignup) => {
             password: password,
             returnSecureToken: true
         }
-        let url = getUrl("verifyPassword");
+        let action = "verifyPassword";
+
         if(isSignup){
-            url = getUrl("signupNewUser");
+            action = "signupNewUser";            
         }
 
-        axios.post(url, authData)
+        authenticate(action, authData, dispatch)
+    }
+}
+
+export const setAuthRedirectPath = (path) => {
+    return {
+        type: actionTypes.SET_AUTH_REDIRECT,
+        path: path
+    }
+}
+
+
+const authenticate = (action, authData, dispatch) => {
+    axios.get("https://localhost:5001/api/values", {headers: {
+        'Content-Type': 'application/json'}}).then(response => {
+        let firebaseUrl = baseUrl + action + "?key=" + response.data.keys.learnReact
+
+        axios.post(firebaseUrl, authData)
         .then(response => {
             console.log(response);
             dispatch(authSuccess(response.data.idToken, response.data.localId));
@@ -61,9 +79,5 @@ export const auth = (email, password, isSignup) => {
             console.log(err)
             dispatch(authFail(err.response.data.error));
         })
-    }
-}
-
-const getUrl = (action) => {
-    return baseUrl + action + "?key=" + apiKey;
+    })    
 }
