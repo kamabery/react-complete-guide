@@ -15,7 +15,7 @@ const INGREDIENT_PRICES = {
 
 }
 
-class BurgerBuilder extends Component {
+export class BurgerBuilder extends Component {
     state = {
         purchasing: false
     }
@@ -59,7 +59,7 @@ class BurgerBuilder extends Component {
             this.setState({purchasing : true});
         }
         else {
-            this.props.setAuthRedirectPath('/checkout');
+            this.props.onSetAuthRedirectPath('/checkout');
             this.props.history.push('/auth');
         }
     }

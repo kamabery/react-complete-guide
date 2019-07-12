@@ -42,14 +42,18 @@ https://github.com/ryanflorence/react-router-relative-links
 Redux
 npm install --save redux
 npm install --save react-redux 
-npm install --save redux-thunk
+npm install --save redux-thunk (https://github.com/reduxjs/redux-thunk)
+----------------------------------------------------------------------------------------
+Enzyme/Jest
+npm install --save enzyme react-test-renderer enzyme-adapter-react-16
+/// node scripts/test.js --env=jsdom
 ========================================================================================
 Forms
 https://codebrahma.com/form-libraries-in-react/
 https://dev.to/italomlp/unform-the-definitive-form-library-for-react-apps-35lh
 https://jaredpalmer.com/formik/docs/overview
 
-Chrome Toos
+Chrome Tools
 ===========================================================================================
 React Web Tools: https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi
 
@@ -58,3 +62,4 @@ Redux Dev Tools: https://chrome.google.com/webstore/detail/redux-devtools/lmhkpm
 
 ----------------------------------------------------------------------------------------------------------
 https://codepen.io/HunorMarton/details/rwpGXj
+https://redux.js.org/recipes/using-immutablejs-with-redux
