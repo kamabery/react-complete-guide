@@ -44,7 +44,8 @@ npm install --save redux
 npm install --save react-redux 
 npm install --save redux-thunk (https://github.com/reduxjs/redux-thunk)
 ----------------------------------------------------------------------------------------
-Enzyme/Jest
+Enzyme/Jest https://jestjs.io/docs/en/getting-started.html
+	        https://airbnb.io/enzyme/docs/api/
 npm install --save enzyme react-test-renderer enzyme-adapter-react-16
 /// node scripts/test.js --env=jsdom
 ========================================================================================
@@ -63,3 +64,15 @@ Redux Dev Tools: https://chrome.google.com/webstore/detail/redux-devtools/lmhkpm
 ----------------------------------------------------------------------------------------------------------
 https://codepen.io/HunorMarton/details/rwpGXj
 https://redux.js.org/recipes/using-immutablejs-with-redux
+
+Animation
+==========================================================================================
+npm install react-transition-group --save
+
+Material Desing
+==================================
+https://material-ui.com/
+
+Building
+===========================================================================================
+npm run build
