@@ -67,12 +67,21 @@ https://redux.js.org/recipes/using-immutablejs-with-redux
 
 Animation
 ==========================================================================================
-npm install react-transition-group --save
+https://github.com/reactjs/react-transition-group
+	npm install react-transition-group --save
+
+https://github.com/chenglou/react-motion
+https://github.com/react-tools/react-move
 
 Material Desing
 ==================================
 https://material-ui.com/
+https://themes.material-ui.com/
 
 Building
 ===========================================================================================
 npm run build
+
+Deploy
+============================================================================================
+https://medium.com/greedygame-engineering/so-you-want-to-dockerize-your-react-app-64fbbb74c217
